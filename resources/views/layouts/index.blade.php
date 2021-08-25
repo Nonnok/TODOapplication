@@ -221,15 +221,15 @@
     color: #fff;
   }
 </style>
-@section('title', 'index.blade.php')
 
 @section('content')
 <div class="container">
   <div class="card">
     <p class="title mb-15">Todo List</p>
     <div class="todo">
-      <form action="/todo/create" method="post" class="flex between mb-30">
+    <form action="/todo/todo/create" method="post" class="flex between mb-30">
       <input type="hidden" name="_token">
+      <input type="text" class="input-add" name="content" />
       <input type="submit" class="button-add" value="追加" />
     </form>
     <table>
@@ -242,16 +242,24 @@
       @foreach ($items as $item)
       <tr>
         <td>
-          {{$item->created_at}}
+          2021-08-25 14:37:47
         </td>
         <td>
-          {{$item->content}}
+          <form action="/todo/update" method="post">
+            <input type="hidden" name="_token">
+            <input type="text" class="input-update" value="風の音、虫の音などはた言うべきにもあらず">
+          </td>
+          <td>
+            <button class="button-update">更新</button>
+          </form>
         </td>
         <td>
-          {{$item->updated_at}}
-        </td>
-        <td>
-          {{$item->delete}}
+          <form action="/todo/delete" method="post">
+            <input type="hidden" name="_token">
+          </td>
+          <td>
+            <button class="button-delete">削除</button>
+          </form>
         </td>
       </tr>
       @endforeach
