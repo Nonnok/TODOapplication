@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Todotask;
+use App\Http\Models\Todotask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +33,7 @@ class TodoController extends Controller
         DB::table('todotasks')->where('id', $request->id)->update($param);
         return redirect('/');
     }
-    
+
     public function delete(Request $request)
     {
         $item = DB::table('todotasks')->where('id', $request->id)->first();
