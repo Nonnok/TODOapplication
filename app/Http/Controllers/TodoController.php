@@ -33,7 +33,11 @@ class TodoController extends Controller
         DB::table('todotasks')->where('id', $request->id)->update($param);
         return redirect('/');
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> refs/remotes/origin/master
     public function delete(Request $request)
     {
         $item = DB::table('todotasks')->where('id', $request->id)->first();
