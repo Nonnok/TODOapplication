@@ -17,10 +17,14 @@ class TodoController extends Controller
 
     public function create(Request $request)
     {
-        $param = [
-            'content' => $request->content,
-        ];
-        DB::table('todotasks')->insert($param);
+        // $param = [
+        //     'content' => $request->content,
+        // ];
+        // DB::table('todotasks')->insert($param);
+        // return redirect('/');
+        $this -> validate($request, Todotask::$rules);
+        $form = $request->all();
+        Todotask::create($form);
         return redirect('/');
     }
 
