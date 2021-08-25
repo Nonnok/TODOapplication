@@ -18,7 +18,7 @@ class TodoController extends Controller
     public function create(Request $request)
     {
         $param = [
-            'name' => $request->content,
+            'content' => $request->content,
         ];
         DB::table('todotasks')->insert($param);
         return redirect('/');
@@ -33,11 +33,7 @@ class TodoController extends Controller
         DB::table('todotasks')->where('id', $request->id)->update($param);
         return redirect('/');
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> refs/remotes/origin/master
     public function delete(Request $request)
     {
         $item = DB::table('todotasks')->where('id', $request->id)->first();
