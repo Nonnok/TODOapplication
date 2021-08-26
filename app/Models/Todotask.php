@@ -12,6 +12,6 @@ class Todotask extends Model
     protected $fillable = ['content'];
 
     public static $rules = array(
-        'content' => ['required', 'digits:20'],
+        'content' => 'required|max:20',
     );
 }

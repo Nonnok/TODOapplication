@@ -17,11 +17,10 @@ class TodoController extends Controller
 
     public function create(Request $request)
     {
-        // $param = [
-        //     'content' => $request->content,
-        // ];
-        // DB::table('todotasks')->insert($param);
-        // return redirect('/');
+        $param = [
+            'content' => $request->content,
+        ];
+        DB::insert('insert into todotasks(content) values (:content)', $param);
         $this -> validate($request, Todotask::$rules);
         $form = $request->all();
         Todotask::create($form);
@@ -34,13 +33,18 @@ class TodoController extends Controller
             'content' => $request->content,
             'updated_at' => $request->updated_at,
         ];
-        DB::table('todotasks')->where('id', $request->id)->update($param);
+        // DB::table('todotasks')->where('id', $request->id)->update($param);
+        DB::update('update todotasks set content =:content, updated_at =:updated_at', $param);
         return redirect('/');
     }
 
     public function delete(Request $request)
     {
-        $item = DB::table('todotasks')->where('id', $request->id)->first();
-        return view('delete', ['form' => $item]);
+        // $item = DB::table('todotasks')->where('id', $request->id)->first();
+        //  return view('delete', ['form' => $item]);
+        // return redirect('/delete');
+        $param = ['content' => $request->content];
+        DB::select('select * from todotasks where content =:content', $param);
+        return redirect('/todo/delete', ['form' => $item[0]]);
     }
 }
