@@ -230,7 +230,7 @@
     <form action="/todo/create" method="post" class="flex between mb-30">
     @csrf
       <input type="hidden">
-      <input type="text" class="input-add" name="content" value="{{$form->content}}">
+      <input type="text" class="input-add" name="content">
       <input type="submit" class="button-add" value="追加" />
     </form>
     <table>
