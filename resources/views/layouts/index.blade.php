@@ -243,8 +243,7 @@
       @foreach ($items as $item)
       <tr>
         <td>
-          $dt = Carbon::now();
-          echo $dt->year, month, day, hour, minute, second;
+          echo Carbon::now();
         </td>
         <td>
           <form action="/todo/update" method="post">
