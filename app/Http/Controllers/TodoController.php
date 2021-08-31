@@ -44,12 +44,12 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function newDate(Request $request)
-    {
-        $datetime = new Carbon::today();
-        print $datetime;
-        return redirect('/');
-    }
+    // public function newDate(Request $request)
+    // {
+    //     $datetime = new Carbon::today();
+    //     print $datetime;
+    //     return redirect('/');
+    // }
 }
 
 // デバック
