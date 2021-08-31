@@ -253,12 +253,13 @@
       @foreach ($items as $item)
       <tr>
         <td>
+          
         </td>
         <td>
           <form action="/todo/update" method="post">
           @csrf
             <input type="hidden">
-            <input type="text" class="input-update">
+            <input type="text" class="input-update" value="{{$item->content}}" />
           </td>
           <td>
             <button class="button-update">更新</button>
@@ -267,7 +268,7 @@
         <td>
           <form action="/todo/delete" method="post">
           @csrf
-            <input type="hidden">
+            <input type="hidden" name="delete" value="{{$item->content}}">
           </td>
           <td>
             <button class="button-delete">削除</button>
@@ -280,3 +281,5 @@
   </div>
 </div>
 @endsection
+
+<!-- datetimeclass -->
