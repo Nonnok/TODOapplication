@@ -19,28 +19,64 @@ class TodoController extends Controller
     }
     public function create(Request $request)
     {
-        $param = [
-            'content' => $request->content,
-        ];
-        DB::insert('insert into todotasks (content) values (:content)', $param);
+        // $param = [
+        //     'content' => $request->content,
+        // ];
+        // DB::insert('insert into todotasks (content) values (:content)', $param);
+        // $form = $request->all();
+        // Todotask::create($form);
+        // return redirect('/');
+        $this->validate($request, Todotask::$rules);
         $form = $request->all();
+        Todotask::create($form);
         return redirect('/');
     }
+
+    // public function bind(Todotask $todotask)
+    // {
+    //     $data = [
+    //         'item' => $todotask,
+    //     ];
+    //     return view('todotask.bins', $data);
+    // }
+
+    public function edit(Request $request)
+    {
+        $todotask = Todotask::find($request->id);
+        return view('edit', ['form'=>'todotask']);
+    }
+
     public function update(Request $request)
     {
-        $task = \App\Models\Todotask::findOrFail($id);
+        // $task = \App\Models\Todotask::findOrFail($id);
 
-        $task->content = $request->content;
+        // $task->content = $request->content;
 
-        $task->save();
+        // $task->save();
 
+        // return redirect('/');
+
+        $this -> validate($request, Todotask::$rules);
+        $content = $request->all();
+        unset($form['_token']);
+        Todotask::where('id', $request->id)->update($form);
         return redirect('/');
     }
-    public function delete(Request $id)
-    {
-        $task = \App\Models\Todotask::findOrFail($id);
 
-        $task->delete();
+    public function delete(Request $request)
+    {
+        // $task = \App\Models\Todotask::findOrFail($id);
+
+        // $task->delete();
+        // return redirect('/');
+
+        $todotask=Todotask::find($request->id);
+        return view('delete', ['form'=>$todotask]);
+    }
+
+    public function remove(Request $request)
+    {
+        Todotask::find($request->id)->delete();
         return redirect('/');
     }
 

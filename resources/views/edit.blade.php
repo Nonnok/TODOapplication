@@ -256,10 +256,10 @@
           
         </td>
         <td>
-          <form action="/todo/{id}/update" method="post">
+          <form action="/todo/update" method="post">
           @csrf
             <input type="hidden">
-            <input type="text" class="input-update" value="{{$item->content}}" />
+            <input type="text" class="input-update" value="{{$form->content}}" />
           </td>
           <td>
             <button class="button-update">更新</button>
