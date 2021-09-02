@@ -18,13 +18,6 @@ class TodoController extends Controller
     }
     public function create(Request $request)
     {
-        // $param = [
-        //     'content' => $request->content,
-        // ];
-        // DB::insert('insert into todotasks (content) values (:content)', $param);
-        // $form = $request->all();
-        // Todotask::create($form);
-        // return redirect('/');
 
         $this->validate($request, Todotask::$rules);
         $form = $request->all();
@@ -32,13 +25,6 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    // public function bind(Todotask $todotask)
-    // {
-    //     $data = [
-    //         'item' => $todotask,
-    //     ];
-    //     return view('todotask.bins', $data);
-    // }
 
     public function edit(Request $request)
     {
@@ -48,13 +34,6 @@ class TodoController extends Controller
 
     public function update(Request $request)
     {
-        // $task = \App\Models\Todotask::findOrFail($id);
-
-        // $task->content = $request->content;
-
-        // $task->save();
-
-        // return redirect('/');
 
         $this -> validate($request, Todotask::$rules);
         $form = $request->all();
@@ -65,11 +44,6 @@ class TodoController extends Controller
 
     public function delete(Request $request)
     {
-        // $task = \App\Models\Todotask::findOrFail($id);
-
-        // $task->delete();
-        // return redirect('/');
-
         $todotask=Todotask::find($todotask->id);
         return view('delete', ['form'=>$request]);
     }
@@ -80,14 +54,3 @@ class TodoController extends Controller
         return redirect('/');
     }
 }
-
-// デバック
-// コンソール
-// ロガー
-// Laravel　ログ
-
-//sklとして間違えている。
-
-// 数字を入れて４２０００が帰ってきたら間違っている。
-
-// 音声認識は後回し可

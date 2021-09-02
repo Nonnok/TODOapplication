@@ -4,10 +4,6 @@ namespace App\Models;
 
 use App\Models\Todo;
 
-// require 'vendor/autoload.php';
-
-// use Carbon\Carbon;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
