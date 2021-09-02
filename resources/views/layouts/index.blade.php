@@ -256,7 +256,7 @@
 
         </td>
         <td>
-          <form action="/todo/update/{id}" method="post" name="update">
+          <form action="/todo/update/{id}" method="post" name="content">
           @csrf
             <input type="hidden">
             <input type="text" class="input-update" value="{{$item->content}}" />
@@ -266,9 +266,9 @@
           </form>
         </td>
         <td>
-          <form action="/todo/delete/{id}" method="post" name="delete">
+          <form action="/todo/delete/{id}" method="post" name="content">
           @csrf
-            <input type="hidden" name="delete" value="{{$item->id}}">
+            <input type="hidden" value="{{$item->id}}">
           </td>
           <td>
             <button class="button-delete">削除</button>
