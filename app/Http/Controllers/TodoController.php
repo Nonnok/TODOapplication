@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 
 use App\Models\Todotask;
 use Illuminate\Http\Request;
@@ -80,13 +79,6 @@ class TodoController extends Controller
         Todotask::find($request->id)->delete();
         return redirect('/');
     }
-
-    // public function newDate(Request $request)
-    // {
-    //     $datetime = new Carbon::today();
-    //     print $datetime;
-    //     return redirect('/');
-    // }
 }
 
 // デバック

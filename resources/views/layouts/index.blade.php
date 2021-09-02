@@ -253,7 +253,13 @@
       @foreach ($items as $item)
       <tr>
         <td>
-          <!-- 作成日を表示する -->
+          <?php
+          require 'vendor/autoload.php';
+
+          use Carbon\Carbon;
+           $dateTime = Carbon::createFromDate($year, $month, $day);
+           echo $dateTime;
+          ?>
         </td>
         <form action="/todo/update/{id}" method="post" name="content">
           @csrf
