@@ -47,7 +47,7 @@ class TodoController extends Controller
         return view('edit', ['form'=>'todotask']);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         // $task = \App\Models\Todotask::findOrFail($id);
 
@@ -58,7 +58,7 @@ class TodoController extends Controller
         // return redirect('/');
 
         $this -> validate($request, Todotask::$rules);
-        $content = $request->all();
+        $form = $request->all();
         unset($form['_token']);
         Todotask::where('id', $request->id)->update($form);
         return redirect('/');

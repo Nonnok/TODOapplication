@@ -238,7 +238,7 @@
     <p class="title mb-15">Todo List</p>
     <div class="todo">
     <form action="/todo/create" method="post" class="flex between mb-30">
-    @csrf
+      @csrf
       <input type="hidden">
       <input type="text" class="input-add" name="content" value="">
       <input type="submit" class="button-add" value="追加" />
@@ -253,24 +253,24 @@
       @foreach ($items as $item)
       <tr>
         <td>
-
+          <!-- 作成日を表示する -->
         </td>
         <td>
           <form action="/todo/update/{id}" method="post" name="content">
-          @csrf
+            @csrf
             <input type="hidden" name="id" value="{{$item->id}}">
             <input type="text" class="input-update" value="{{$item->content}}" />
-          </td>
-          <td>
+        </td>
+        <td>
             <button class="button-update">更新</button>
           </form>
         </td>
         <td>
           <form action="/todo/delete/{id}" method="post" name="content">
-          @csrf
+            @csrf
             <input type="hidden" name="id" value="{{$item->id}}">
-          </td>
-          <td>
+        </td>
+        <td>
             <button class="button-delete">削除</button>
           </form>
         </td>
