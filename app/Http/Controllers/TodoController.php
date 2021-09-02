@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
-    public function index()
+    public function index(Request $id)
     {
         $items = Todotask::all();
         $items = DB::select('select * from todotasks');
@@ -26,6 +26,7 @@ class TodoController extends Controller
         // $form = $request->all();
         // Todotask::create($form);
         // return redirect('/');
+
         $this->validate($request, Todotask::$rules);
         $form = $request->all();
         Todotask::create($form);
@@ -46,7 +47,7 @@ class TodoController extends Controller
         return view('edit', ['form'=>'todotask']);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // $task = \App\Models\Todotask::findOrFail($id);
 
@@ -70,8 +71,8 @@ class TodoController extends Controller
         // $task->delete();
         // return redirect('/');
 
-        $todotask=Todotask::find($request->id);
-        return view('delete', ['form'=>$todotask]);
+        $todotask=Todotask::find($todotask->id);
+        return view('delete', ['form'=>$request]);
     }
 
     public function remove(Request $request)

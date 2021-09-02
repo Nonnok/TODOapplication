@@ -240,7 +240,7 @@
     <form action="/todo/create" method="post" class="flex between mb-30">
     @csrf
       <input type="hidden">
-      <input type="text" class="input-add" name="create" value="">
+      <input type="text" class="input-add" name="content" value="">
       <input type="submit" class="button-add" value="追加" />
     </form>
     <table>
@@ -253,10 +253,10 @@
       @foreach ($items as $item)
       <tr>
         <td>
-          
+
         </td>
         <td>
-          <form action="/todo/{id}/update" method="post">
+          <form action="/todo/update/{id}" method="post" name="update">
           @csrf
             <input type="hidden">
             <input type="text" class="input-update" value="{{$item->content}}" />
@@ -266,7 +266,7 @@
           </form>
         </td>
         <td>
-          <form action="/todo/delete" method="post">
+          <form action="/todo/delete/{id}" method="post" name="delete">
           @csrf
             <input type="hidden" name="delete" value="{{$item->id}}">
           </td>
