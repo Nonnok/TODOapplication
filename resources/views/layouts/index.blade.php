@@ -255,22 +255,20 @@
         <td>
           <!-- 作成日を表示する -->
         </td>
+        <form action="/todo/update/{id}" method="post" name="content">
+          @csrf
+          <input type="hidden" name="id" value="{{$item->id}}">
         <td>
-          <form action="/todo/update/{id}" method="post" name="content">
-            @csrf
-            <input type="hidden" name="id" value="{{$item->id}}">
-            <input type="text" class="input-update" value="{{$item->content}}" />
+          <input type="text" class="input-update" value="{{$item->content}}" name="content"/>
         </td>
         <td>
-            <button class="button-update">更新</button>
-          </form>
+          <button class="button-update">更新</button>
         </td>
+        </form>
         <td>
           <form action="/todo/delete/{id}" method="post" name="content">
             @csrf
             <input type="hidden" name="id" value="{{$item->id}}">
-        </td>
-        <td>
             <button class="button-delete">削除</button>
           </form>
         </td>
